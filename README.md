@@ -1,3 +1,3 @@
 # CCAppCore
 
-A description of this package.
+Common code used for Swift iOS projects.
