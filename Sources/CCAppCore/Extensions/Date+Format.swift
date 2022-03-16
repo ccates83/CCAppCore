@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
     
     private func longFormat() -> String {
         return "\(self.monthAsString()) \(self.dayAsString()), \(self.yearAsString())"

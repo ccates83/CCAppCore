@@ -8,7 +8,7 @@
 import Foundation
 
 /// Type-erased implementation of `ServiceFactory`
-final class AnyServiceFactory {
+public final class AnyServiceFactory {
     private let _resolve: (Resolver) throws -> Any
     private let _supports: (Any.Type) -> Bool
 

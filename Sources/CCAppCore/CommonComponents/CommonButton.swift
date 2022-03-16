@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol ButtonStyleConstants {
+public protocol ButtonStyleConstants {
     var backgroundColor: Color { get set }
     var foregroundColor: Color { get set }
     var isDisabled: Bool { get set }
@@ -54,7 +54,7 @@ struct CommonButtonStyle: ButtonStyle {
     }
 }
 
-struct CommonButton: View {
+public struct CommonButton: View {
     
     private static let buttonHorizontalMargins: CGFloat = 20
     

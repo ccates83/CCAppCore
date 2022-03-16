@@ -19,6 +19,13 @@ private enum MainViewRows: String, CaseIterable, Identifiable {
         return self.rawValue
     }
     
+    var destination: some View {
+        switch self {
+        case .commonButton:
+            return CommonButtonView()
+        }
+    }
+    
 }
 
 struct MainView: View {
@@ -26,10 +33,14 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             List(MainViewRows.allCases) { row in
-                Text(row.title)
-                    }
-                    .navigationBarTitle("CCAppCoreSampler")
+                NavigationLink(destination: {
+                    row.destination
+                }, label: {
+                    Text(row.rawValue)
+                })
                 }
+                .navigationBarTitle("CC App Core")
+            }
     }
 }
 

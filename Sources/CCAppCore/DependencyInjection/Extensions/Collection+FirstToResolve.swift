@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: Internal API
 
-extension Collection where Index == Int {
+public extension Collection where Index == Int {
 
     /// tries to resolve the `ServiceType` and returns the instance as soon as the first element resolves it successfully.
     func firstToResolve<ServiceType>(_ factory: (Element) throws -> ServiceType) throws -> ServiceType {

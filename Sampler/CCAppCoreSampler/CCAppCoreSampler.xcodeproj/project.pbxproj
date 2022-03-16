@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E899D2DC27E1938100B29C63 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E899D2DB27E1938100B29C63 /* MainView.swift */; };
+		E899D2E027E1940D00B29C63 /* CommonButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E899D2DF27E1940D00B29C63 /* CommonButtonView.swift */; };
 		E8C6E82427E18A2A0027816F /* CCAppCoreSamplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6E82327E18A2A0027816F /* CCAppCoreSamplerApp.swift */; };
 		E8C6E82627E18A2A0027816F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6E82527E18A2A0027816F /* ContentView.swift */; };
 		E8C6E82827E18A2B0027816F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C6E82727E18A2B0027816F /* Assets.xcassets */; };
@@ -15,7 +17,6 @@
 		E8C6E83F27E18A2C0027816F /* CCAppCoreSamplerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6E83E27E18A2C0027816F /* CCAppCoreSamplerUITests.swift */; };
 		E8C6E84127E18A2C0027816F /* CCAppCoreSamplerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6E84027E18A2C0027816F /* CCAppCoreSamplerUITestsLaunchTests.swift */; };
 		E8C6E84F27E18B8E0027816F /* CCAppCore in Frameworks */ = {isa = PBXBuildFile; productRef = E8C6E84E27E18B8E0027816F /* CCAppCore */; };
-		E8C6E85127E18BCF0027816F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6E85027E18BCF0027816F /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E899D2DB27E1938100B29C63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E899D2DF27E1940D00B29C63 /* CommonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButtonView.swift; sourceTree = "<group>"; };
 		E8C6E82027E18A2A0027816F /* CCAppCoreSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCAppCoreSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C6E82327E18A2A0027816F /* CCAppCoreSamplerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppCoreSamplerApp.swift; sourceTree = "<group>"; };
 		E8C6E82527E18A2A0027816F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,7 +49,6 @@
 		E8C6E83A27E18A2C0027816F /* CCAppCoreSamplerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCAppCoreSamplerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C6E83E27E18A2C0027816F /* CCAppCoreSamplerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppCoreSamplerUITests.swift; sourceTree = "<group>"; };
 		E8C6E84027E18A2C0027816F /* CCAppCoreSamplerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppCoreSamplerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E8C6E85027E18BCF0027816F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E899D2DD27E193F300B29C63 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				E899D2DE27E193FC00B29C63 /* Buttons */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		E899D2DE27E193FC00B29C63 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				E899D2DF27E1940D00B29C63 /* CommonButtonView.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		E8C6E81727E18A2A0027816F = {
 			isa = PBXGroup;
 			children = (
@@ -98,11 +116,12 @@
 		E8C6E82227E18A2A0027816F /* CCAppCoreSampler */ = {
 			isa = PBXGroup;
 			children = (
+				E899D2DD27E193F300B29C63 /* Controls */,
 				E8C6E82327E18A2A0027816F /* CCAppCoreSamplerApp.swift */,
 				E8C6E82527E18A2A0027816F /* ContentView.swift */,
 				E8C6E82727E18A2B0027816F /* Assets.xcassets */,
 				E8C6E82927E18A2B0027816F /* Preview Content */,
-				E8C6E85027E18BCF0027816F /* MainView.swift */,
+				E899D2DB27E1938100B29C63 /* MainView.swift */,
 			);
 			path = CCAppCoreSampler;
 			sourceTree = "<group>";
@@ -269,7 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8C6E82627E18A2A0027816F /* ContentView.swift in Sources */,
-				E8C6E85127E18BCF0027816F /* MainView.swift in Sources */,
+				E899D2E027E1940D00B29C63 /* CommonButtonView.swift in Sources */,
+				E899D2DC27E1938100B29C63 /* MainView.swift in Sources */,
 				E8C6E82427E18A2A0027816F /* CCAppCoreSamplerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

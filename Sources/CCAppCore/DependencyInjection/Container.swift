@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Scope: Container {
+public class Scope: Container {
     
     func provide<ServiceType>() -> ServiceType? {
         do {
@@ -23,7 +23,7 @@ class Scope: Container {
 }
 
 /// Stores the configuration on how to create instances of the registered types
-class Container {
+public class Container {
     let dependency: Resolver?
     let factories: [AnyServiceFactory]
     
@@ -69,7 +69,7 @@ class Container {
 
 // MARK: - Resolver
 
-extension Container: Resolver {
+public extension Container: Resolver {
     /// returns a resolver that can be used to resolve the container objects
     public var resolver: Resolver { return self as Resolver }
 
@@ -98,7 +98,7 @@ extension Container: Resolver {
 
 // MARK: - Error
 
-extension Container {
+public extension Container {
     public static func unableToResolve<ServiceType>(_ type: ServiceType.Type) -> Error {
         return .factoryNotFound(service: type)
     }

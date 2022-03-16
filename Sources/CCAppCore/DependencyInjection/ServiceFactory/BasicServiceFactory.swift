@@ -8,7 +8,7 @@
 import Foundation
 
 /// Implementation of `ServiceFactory` that is used to generate instances of the generic type `ServiceType`
-struct BasicServiceFactory<ServiceType>: ServiceFactory {
+public struct BasicServiceFactory<ServiceType>: ServiceFactory {
     private let factory: (Resolver) throws -> ServiceType
 
     /// initializes the factory with type `ServiceType` and a factory for creation of the type
