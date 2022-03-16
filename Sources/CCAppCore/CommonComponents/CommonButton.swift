@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public protocol ButtonStyleAttributes {
+public protocol ButtonStyleAttributes : ObservableObject {
     var backgroundColor: Color { get set }
     var foregroundColor: Color { get set }
     var isDisabled: Bool { get set }

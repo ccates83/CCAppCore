@@ -8,11 +8,38 @@
 import SwiftUI
 import CCAppCore
 
+private class CommonButtonStyleAttributes : ButtonStyleAttributes, ObservableObject {
+    
+    @Published var backgroundColor: Color = .blue
+    
+    @Published var foregroundColor: Color = .white
+    
+    @Published var isDisabled: Bool = false
+    
+    @Published var backgroundOpacityOnPress: Double = 0.3
+    
+    @Published var foregroundOpacityOnPress: Double = 0.3
+    
+    @Published var cornerRadius: CGFloat = 10
+    
+    @Published var borderColor: Color = .clear
+    
+    @Published var borderStroke: CGFloat  = 0
+    
+    @Published var verticalPadding: CGFloat = 10
+    
+    @Published var font: Font = .headline
+    
+    let identifier = UUID()
+}
+
 struct CommonButtonView: View {
     
     // MARK: - State Properties
     
     @State var buttonTitle: String = "Button Title"
+    
+    @ObservedObject var styleAttributes: ButtonStyleAttributes = CommonButtonStyleAttributes()
     
     // MARK: - Style Components
     
@@ -28,7 +55,24 @@ struct CommonButtonView: View {
     }
     
     private var backgroundColorEditor: some View {
-        Text("")
+        let colors: [Color] = [
+            .red, .orange, .yellow, .green, .blue, .indigo, .purple
+        ]
+        return ScrollView(.horizontal) {
+            HStack {
+                ForEach(colors) { color in
+                    Button(action: {
+                        self.$styleAttributes.backgroundColor = color
+                    }, label: {
+                        Text("")
+                    })
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(color)
+                        .background(color)
+                        .clipShape(Circle())
+                }
+            }
+        }
     }
     
     /// Scroll view of all stylable property controllers
@@ -47,7 +91,7 @@ struct CommonButtonView: View {
     
     var body: some View {
         VStack  {
-            CommonButton(title: self.buttonTitle, action: {
+            CommonButton(title: self.buttonTitle, styleAttributes: self.styleAttributes, action: {
                 print("I was clicked!")
             })
             self.styleComponents
@@ -58,5 +102,12 @@ struct CommonButtonView: View {
 struct CommonButtonView_Previews: PreviewProvider {
     static var previews: some View {
         CommonButtonView()
+    }
+}
+
+extension Color: Identifiable {
+    
+    public var id: UUID {
+        UUID()
     }
 }
