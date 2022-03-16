@@ -22,10 +22,10 @@ let package = Package(
         .target(
             name: "CCAppCore",
             dependencies: [],
-            exclude: ["Sampler/*"]),
+            exclude: ["Sampler"]),
         .testTarget(
             name: "CCAppCoreTests",
             dependencies: ["CCAppCore"],
-            exclude: ["Sampler/*"]),
+            exclude: ["Sampler"]),
     ]
 )
