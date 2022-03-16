@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public protocol ButtonStyleConstants {
+public protocol ButtonStyleAttributes {
     var backgroundColor: Color { get set }
     var foregroundColor: Color { get set }
     var isDisabled: Bool { get set }
@@ -20,7 +20,7 @@ public protocol ButtonStyleConstants {
     var font: Font { get set }
 }
 
-struct CCButtonStyleConstants : ButtonStyleConstants {
+struct CCButtonStyleAttributes : ButtonStyleAttributes {
     var backgroundColor: Color
     var foregroundColor: Color
     var isDisabled: Bool
@@ -35,7 +35,7 @@ struct CCButtonStyleConstants : ButtonStyleConstants {
 
 struct CommonButtonStyle: ButtonStyle {
     
-    var constants: ButtonStyleConstants
+    var constants: ButtonStyleAttributes
     
     func makeBody(configuration: Self.Configuration) -> some View {
         let currentForegroundColor = self.constants.isDisabled || configuration.isPressed ? self.constants.foregroundColor.opacity(self.constants.foregroundOpacityOnPress) : self.constants.foregroundColor
@@ -58,27 +58,19 @@ public struct CommonButton: View {
     
     private static let buttonHorizontalMargins: CGFloat = 20
     
-    var backgroundColor: Color
-    var foregroundColor: Color
-    
     private let title: String
     private let action: () -> Void
     
-    // It would be nice to make this into a binding.
-    private let disabled: Bool
+    private let styleAttributes: ButtonStyleAttributes
     
     public init(title: String,
-         disabled: Bool = false,
-         backgroundColor: Color = Color.green,
-         foregroundColor: Color = Color.white,
-         action: @escaping () -> Void) {
-        self.backgroundColor = backgroundColor
-        self.foregroundColor = foregroundColor
+                styleAttributes: ButtonStyleAttributes,
+                action: @escaping () -> Void) {
         self.title = title
+        self.styleAttributes = styleAttributes
         self.action = action
-        self.disabled = disabled
     }
-    
+        
     public var body: some View {
         HStack {
             Spacer(minLength: CommonButton.buttonHorizontalMargins)
@@ -87,10 +79,8 @@ public struct CommonButton: View {
                     .frame(maxWidth:.infinity)
             }
             .buttonStyle(CommonButtonStyle(
-                constants: CCButtonStyleConstants(backgroundColor: backgroundColor,
-                                               foregroundColor: foregroundColor,
-                                               isDisabled: disabled)))
-            .disabled(self.disabled)
+                constants: self.styleAttributes))
+            .disabled(self.styleAttributes.isDisabled)
             Spacer(minLength: CommonButton.buttonHorizontalMargins)
         }
         .frame(maxWidth:.infinity)
@@ -100,6 +90,8 @@ public struct CommonButton: View {
 
 struct CommonButton_Previews: PreviewProvider {
     static var previews: some View {
-        CommonButton(title: "button", action: { })
+        CommonButton(title: "button", styleAttributes: CCButtonStyleAttributes(backgroundColor: .blue, foregroundColor: .white, isDisabled: false)) {
+            
+        }
     }
 }
