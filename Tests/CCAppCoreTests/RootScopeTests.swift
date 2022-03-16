@@ -19,8 +19,8 @@ class RootScopeTests: XCTestCase {
     }
 
     func testRegisterDependency() throws {
-        let scope = Scope()
-                    .register(Int.self, instance: 10)
+//        let scope = Scope()
+//                    .register(Int.self, instance: 10)
 //        let val: Int? = scope.provide()
         
 //        XCTAssertEqual(val, 10)

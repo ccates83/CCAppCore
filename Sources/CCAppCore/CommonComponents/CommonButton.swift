@@ -79,7 +79,7 @@ public struct CommonButton: View {
         self.disabled = disabled
     }
     
-    var body: some View {
+    public var body: some View {
         HStack {
             Spacer(minLength: CommonButton.buttonHorizontalMargins)
             Button(action:self.action) {

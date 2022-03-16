@@ -7,23 +7,25 @@
 
 import Foundation
 
-public class Scope: Container {
+public class Scope {
     
-    func provide<ServiceType>() -> ServiceType? {
-        do {
-            let val: ServiceType = try self.resolver.resolve()
-            return val
-        } catch {
-            print(Container.unableToResolve(ServiceType.self).localizedDescription)
-            return nil
-        }
-        
-//        return try self.resolve(ServiceType.self)
-    }
+//    private let containter = Container()
+//    
+//    func provide<ServiceType>() -> ServiceType? {
+//        do {
+//            let val: ServiceType = try self.resolver.resolve()
+//            return val
+//        } catch {
+//            print(Container.unableToResolve(ServiceType.self).localizedDescription)
+//            return nil
+//        }
+//        
+////        return try self.resolve(ServiceType.self)
+//    }
 }
 
 /// Stores the configuration on how to create instances of the registered types
-public class Container {
+class Container {
     let dependency: Resolver?
     let factories: [AnyServiceFactory]
     
@@ -69,7 +71,7 @@ public class Container {
 
 // MARK: - Resolver
 
-public extension Container: Resolver {
+extension Container: Resolver {
     /// returns a resolver that can be used to resolve the container objects
     public var resolver: Resolver { return self as Resolver }
 
@@ -98,7 +100,7 @@ public extension Container: Resolver {
 
 // MARK: - Error
 
-public extension Container {
+extension Container {
     public static func unableToResolve<ServiceType>(_ type: ServiceType.Type) -> Error {
         return .factoryNotFound(service: type)
     }

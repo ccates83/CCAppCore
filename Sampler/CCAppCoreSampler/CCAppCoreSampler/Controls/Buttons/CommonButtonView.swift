@@ -12,7 +12,7 @@ struct CommonButtonView: View {
     var body: some View {
         ScrollView {
             VStack {
-                CommonButton()
+                Text(")")
             }
         }
     }

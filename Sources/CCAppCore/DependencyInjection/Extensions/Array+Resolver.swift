@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension Array: Resolver where Element == Resolver {
+extension Array: Resolver where Element == Resolver {
 
     /// tries to resolve to an instance of `ServiceType` and returns the instance as soon as the first element(resolver)
     /// resolves it successfully.
