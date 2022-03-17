@@ -38,13 +38,12 @@ struct CommonButtonView: View {
     // MARK: - State Properties
     
     @State var buttonTitle: String = "Button Title"
-    @State var styleAttributes: ButtonStyleAttributes
+    @EnvironmentObject var styleAttributes: CommonButtonStyleAttributes
     
     private var buttonView: some View {
         
         CommonButton(
             title: self.buttonTitle,
-            styleAttributes: self.$styleAttributes,
             action: {
                 
             })
@@ -71,7 +70,7 @@ struct CommonButtonView: View {
             HStack {
                 ForEach(colors) { color in
                     Button(action: {
-                        self.$styleAttributes.backgroundColor = color
+//                        self.$styleAttributes.backgroundColor = color
                     }, label: {
                         Text("")
                     })
@@ -108,7 +107,8 @@ struct CommonButtonView: View {
 
 struct CommonButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        CommonButtonView(buttonTitle: "Button title!", styleAttributes: CommonButtonStyleAttributes())
+        CommonButtonView(buttonTitle: "Button title!")
+            .environmentObject(CommonButtonStyleAttributes())
     }
 }
 

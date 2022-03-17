@@ -23,8 +23,8 @@ private enum MainViewRows: String, CaseIterable, Identifiable {
     var destination: some View {
         switch self {
         case .commonButton:
-            return CommonButtonView(buttonTitle: "Button title!",
-                                    styleAttributes: CommonButtonStyleAttributes())
+            return CommonButtonView(buttonTitle: "Button title!")
+                .environmentObject(CommonButtonStyleAttributes())
         }
     }
     

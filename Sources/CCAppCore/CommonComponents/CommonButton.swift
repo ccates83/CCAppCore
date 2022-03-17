@@ -35,7 +35,7 @@ class CommonButtonStyleAttributes: ObservableObject {
 
 struct CommonButtonStyle: ButtonStyle {
     
-    @State var constants: CommonButtonStyleAttributes
+    @EnvironmentObject var constants: CommonButtonStyleAttributes
     
     func makeBody(configuration: Self.Configuration) -> some View {
         let currentForegroundColor = self.constants.isDisabled || configuration.isPressed ? self.constants.foregroundColor.opacity(self.constants.foregroundOpacityOnPress) : self.constants.foregroundColor
@@ -75,8 +75,7 @@ public struct CommonButton: View {
                 Text(self.title)
                     .frame(maxWidth:.infinity)
             }
-            .buttonStyle(CommonButtonStyle(
-                constants: self.styleAttributes))
+            .buttonStyle(CommonButtonStyle())
             .disabled(self.styleAttributes.isDisabled)
             Spacer(minLength: CommonButton.buttonHorizontalMargins)
         }
