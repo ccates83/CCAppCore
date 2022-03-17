@@ -38,7 +38,7 @@ struct CommonButtonView: View {
     // MARK: - State Properties
     
     @State var buttonTitle: String = "Button Title"
-    State var styleAttributes: ButtonStyleAttributes
+    @State var styleAttributes: ButtonStyleAttributes
     
     private var buttonView: some View {
         

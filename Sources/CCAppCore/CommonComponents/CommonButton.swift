@@ -20,22 +20,22 @@ public protocol ButtonStyleAttributes {
     var font: Font { get set }
 }
 
-struct CCButtonStyleAttributes : ButtonStyleAttributes {
-    var backgroundColor: Color
-    var foregroundColor: Color
-    var isDisabled: Bool
-    var backgroundOpacityOnPress: Double = 0.3
-    var foregroundOpacityOnPress: Double = 0.3
-    var cornerRadius: CGFloat = 6
-    var borderColor: Color = .black
-    var borderStroke: CGFloat = 3
-    var verticalPadding: CGFloat = 10
-    var font: Font = Font.system(size: 19, weight: .semibold)
+class CommonButtonStyleAttributes: ObservableObject {
+    @Published var backgroundColor: Color = .blue
+    @Published var foregroundColor: Color = .white
+    @Published var isDisabled: Bool = false
+    @Published var backgroundOpacityOnPress: Double = 0.3
+    @Published var foregroundOpacityOnPress: Double = 0.3
+    @Published var cornerRadius: CGFloat = 6
+    @Published var borderColor: Color = .black
+    @Published var borderStroke: CGFloat = 3
+    @Published var verticalPadding: CGFloat = 10
+    @Published var font: Font = Font.system(size: 19, weight: .semibold)
 }
 
 struct CommonButtonStyle: ButtonStyle {
     
-    @Binding var constants: ButtonStyleAttributes
+    @State var constants: CommonButtonStyleAttributes
     
     func makeBody(configuration: Self.Configuration) -> some View {
         let currentForegroundColor = self.constants.isDisabled || configuration.isPressed ? self.constants.foregroundColor.opacity(self.constants.foregroundOpacityOnPress) : self.constants.foregroundColor
@@ -58,14 +58,13 @@ public struct CommonButton: View {
     
     private static let buttonHorizontalMargins: CGFloat = 20
     
-    @Binding var styleAttributes: ButtonStyleAttributes
+    @EnvironmentObject var styleAttributes: CommonButtonStyleAttributes
     
     public let title: String
     public let action: () -> Void
     
-    public init(title: String, styleAttributes: Binding<ButtonStyleAttributes>, action: @escaping () -> Void) {
+    public init(title: String, action: @escaping () -> Void) {
         self.title = title
-        _styleAttributes = Binding(projectedValue: styleAttributes)
         self.action = action
     }
         
@@ -77,7 +76,7 @@ public struct CommonButton: View {
                     .frame(maxWidth:.infinity)
             }
             .buttonStyle(CommonButtonStyle(
-                constants: self.$styleAttributes))
+                constants: self.styleAttributes))
             .disabled(self.styleAttributes.isDisabled)
             Spacer(minLength: CommonButton.buttonHorizontalMargins)
         }
