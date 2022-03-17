@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public protocol ButtonStyleAttributes : ObservableObject {
+public protocol ButtonStyleAttributes {
     var backgroundColor: Color { get set }
     var foregroundColor: Color { get set }
     var isDisabled: Bool { get set }
@@ -58,18 +58,10 @@ public struct CommonButton: View {
     
     private static let buttonHorizontalMargins: CGFloat = 20
     
-    private let title: String
-    private let action: () -> Void
+    @Binding var styleAttributes: ButtonStyleAttributes
     
-    private let styleAttributes: ButtonStyleAttributes
-    
-    public init(title: String,
-                styleAttributes: ButtonStyleAttributes,
-                action: @escaping () -> Void) {
-        self.title = title
-        self.styleAttributes = styleAttributes
-        self.action = action
-    }
+    public let title: String
+    public let action: () -> Void
         
     public var body: some View {
         HStack {
@@ -84,14 +76,5 @@ public struct CommonButton: View {
             Spacer(minLength: CommonButton.buttonHorizontalMargins)
         }
         .frame(maxWidth:.infinity)
-    }
-}
-
-
-struct CommonButton_Previews: PreviewProvider {
-    static var previews: some View {
-        CommonButton(title: "button", styleAttributes: CCButtonStyleAttributes(backgroundColor: .blue, foregroundColor: .white, isDisabled: false)) {
-            
-        }
     }
 }

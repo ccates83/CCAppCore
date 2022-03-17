@@ -8,6 +8,74 @@
 import SwiftUI
 import CCAppCore
 
+public protocol ButtonStyleAttributes {
+    
+    var backgroundColor: Color { get set }
+    var foregroundColor: Color { get set }
+    var isDisabled: Bool { get set }
+    var backgroundOpacityOnPress: Double { get set }
+    var foregroundOpacityOnPress: Double { get set }
+    var cornerRadius: CGFloat { get set }
+    var borderColor: Color { get set }
+    var borderStroke: CGFloat { get set }
+    var verticalPadding: CGFloat { get set }
+    var font: Font { get set }
+}
+
+struct CommonButtonStyle: ButtonStyle {
+    
+    var constants: ButtonStyleAttributes
+    
+    func makeBody(configuration: Self.Configuration) -> some View {
+        let currentForegroundColor = self.constants.isDisabled || configuration.isPressed ? self.constants.foregroundColor.opacity(self.constants.foregroundOpacityOnPress) : self.constants.foregroundColor
+        return configuration.label
+            .padding()
+            .foregroundColor(currentForegroundColor)
+            .background(self.constants.isDisabled || configuration.isPressed ? self.constants.backgroundColor.opacity(self.constants.backgroundOpacityOnPress) : self.constants.backgroundColor)
+            // This is the key part, we are using both an overlay as well as cornerRadius
+            .cornerRadius(self.constants.cornerRadius)
+            .overlay(
+                RoundedRectangle(cornerRadius: self.constants.cornerRadius)
+                    .stroke(self.constants.borderColor, lineWidth: self.constants.borderStroke)
+        )
+            .padding([.top, .bottom], self.constants.verticalPadding)
+            .font(self.constants.font)
+    }
+}
+
+public struct CommonButton: View {
+    
+    private static let buttonHorizontalMargins: CGFloat = 20
+    
+    private let title: String
+    private let action: () -> Void
+    
+    private let styleAttributes: ButtonStyleAttributes
+    
+    public init(title: String,
+                styleAttributes: ButtonStyleAttributes,
+                action: @escaping () -> Void) {
+        self.title = title
+        self.styleAttributes = styleAttributes
+        self.action = action
+    }
+        
+    public var body: some View {
+        HStack {
+            Spacer(minLength: CommonButton.buttonHorizontalMargins)
+            Button(action:self.action) {
+                Text(self.title)
+                    .frame(maxWidth:.infinity)
+            }
+            .buttonStyle(CommonButtonStyle(
+                constants: self.styleAttributes))
+            .disabled(self.styleAttributes.isDisabled)
+            Spacer(minLength: CommonButton.buttonHorizontalMargins)
+        }
+        .frame(maxWidth:.infinity)
+    }
+}
+
 private class CommonButtonStyleAttributes : ButtonStyleAttributes, ObservableObject {
     
     @Published var backgroundColor: Color = .blue
@@ -39,7 +107,20 @@ struct CommonButtonView: View {
     
     @State var buttonTitle: String = "Button Title"
     
-    @ObservedObject var styleAttributes: ButtonStyleAttributes = CommonButtonStyleAttributes()
+    @State var styleAttributes: ButtonStyleAttributes?
+    
+    public init() {
+        self.styleAttributes = CommonButtonStyleAttributes()
+    }
+    
+    private var buttonView: some View {
+        CommonButton(
+            title: self.buttonTitle,
+            styleAttributes: self.styleAttributes,
+            action: {
+                
+            })
+    }
     
     // MARK: - Style Components
     
@@ -62,7 +143,7 @@ struct CommonButtonView: View {
             HStack {
                 ForEach(colors) { color in
                     Button(action: {
-                        self.$styleAttributes.backgroundColor = color
+                        self.button = self.button.background(color) as? CommonButton
                     }, label: {
                         Text("")
                     })
@@ -91,9 +172,7 @@ struct CommonButtonView: View {
     
     var body: some View {
         VStack  {
-            CommonButton(title: self.buttonTitle, styleAttributes: self.styleAttributes, action: {
-                print("I was clicked!")
-            })
+            self.button
             self.styleComponents
         }
     }
