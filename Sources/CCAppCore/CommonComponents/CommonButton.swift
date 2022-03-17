@@ -55,9 +55,6 @@ struct CommonButtonStyle: ButtonStyle {
 }
 
 public struct CommonButton: View {
-    
-    private static let buttonHorizontalMargins: CGFloat = 20
-    
     @EnvironmentObject var styleAttributes: CommonButtonStyleAttributes
     
     public let title: String
@@ -75,10 +72,16 @@ public struct CommonButton: View {
                 Text(self.title)
                     .frame(maxWidth:.infinity)
             }
-            .buttonStyle(CommonButtonStyle())
-            .disabled(self.styleAttributes.isDisabled)
+            .buttonStyle(
+                CommonButtonStyle()
+            )
+//            .disabled(self.styleAttributes.isDisabled)
             Spacer(minLength: CommonButton.buttonHorizontalMargins)
         }
         .frame(maxWidth:.infinity)
     }
+}
+
+extension CommonButton {
+    private static let buttonHorizontalMargins: CGFloat = 20
 }
