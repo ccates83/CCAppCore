@@ -62,6 +62,12 @@ public struct CommonButton: View {
     
     public let title: String
     public let action: () -> Void
+    
+    public init(title: String, styleAttributes: Binding<ButtonStyleAttributes>, action: @escaping () -> Void) {
+        self.title = title
+        _styleAttributes = Binding(projectedValue: styleAttributes)
+        self.action = action
+    }
         
     public var body: some View {
         HStack {
