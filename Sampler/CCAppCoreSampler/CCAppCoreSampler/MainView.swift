@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CCAppCore
 
 private enum MainViewRows: String, CaseIterable, Identifiable {
         
@@ -22,7 +23,8 @@ private enum MainViewRows: String, CaseIterable, Identifiable {
     var destination: some View {
         switch self {
         case .commonButton:
-            return CommonButtonView()
+            return CommonButtonView(buttonTitle: "Button title!",
+                                    styleAttributes: CommonButtonStyleAttributes())
         }
     }
     

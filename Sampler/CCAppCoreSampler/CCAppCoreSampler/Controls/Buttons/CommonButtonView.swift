@@ -8,7 +8,7 @@
 import SwiftUI
 import CCAppCore
 
-private class CommonButtonStyleAttributes : ButtonStyleAttributes, ObservableObject {
+class CommonButtonStyleAttributes : ButtonStyleAttributes, ObservableObject {
     
     @Published var backgroundColor: Color = .blue
     
@@ -38,17 +38,13 @@ struct CommonButtonView: View {
     // MARK: - State Properties
     
     @State var buttonTitle: String = "Button Title"
-    
-    @State var styleAttributes: ButtonStyleAttributes?
-    
-    public init() {
-        self.styleAttributes = CommonButtonStyleAttributes()
-    }
+    State var styleAttributes: ButtonStyleAttributes
     
     private var buttonView: some View {
+        
         CommonButton(
             title: self.buttonTitle,
-            styleAttributes: self.styleAttributes,
+            styleAttributes: self.$styleAttributes,
             action: {
                 
             })
@@ -75,7 +71,7 @@ struct CommonButtonView: View {
             HStack {
                 ForEach(colors) { color in
                     Button(action: {
-                        self.button = self.button.background(color) as? CommonButton
+                        self.$styleAttributes.backgroundColor = color
                     }, label: {
                         Text("")
                     })
@@ -104,7 +100,7 @@ struct CommonButtonView: View {
     
     var body: some View {
         VStack  {
-            self.button
+            self.buttonView
             self.styleComponents
         }
     }
@@ -112,7 +108,7 @@ struct CommonButtonView: View {
 
 struct CommonButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        CommonButtonView()
+        CommonButtonView(buttonTitle: "Button title!", styleAttributes: CommonButtonStyleAttributes())
     }
 }
 
