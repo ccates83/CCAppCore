@@ -16,7 +16,7 @@
 		E8C6E83527E18A2C0027816F /* CCAppCoreSamplerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6E83427E18A2C0027816F /* CCAppCoreSamplerTests.swift */; };
 		E8C6E83F27E18A2C0027816F /* CCAppCoreSamplerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6E83E27E18A2C0027816F /* CCAppCoreSamplerUITests.swift */; };
 		E8C6E84127E18A2C0027816F /* CCAppCoreSamplerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6E84027E18A2C0027816F /* CCAppCoreSamplerUITestsLaunchTests.swift */; };
-		E8C6E84F27E18B8E0027816F /* CCAppCore in Frameworks */ = {isa = PBXBuildFile; productRef = E8C6E84E27E18B8E0027816F /* CCAppCore */; };
+		E8C9AB8B2809D8F300F81660 /* TextIconListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C9AB8A2809D8F300F81660 /* TextIconListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E80ECB78282B521F00D13E81 /* CCAppCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CCAppCore; path = ../..; sourceTree = "<group>"; };
 		E899D2DB27E1938100B29C63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E899D2DF27E1940D00B29C63 /* CommonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButtonView.swift; sourceTree = "<group>"; };
 		E8C6E82027E18A2A0027816F /* CCAppCoreSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCAppCoreSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +50,7 @@
 		E8C6E83A27E18A2C0027816F /* CCAppCoreSamplerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCAppCoreSamplerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C6E83E27E18A2C0027816F /* CCAppCoreSamplerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppCoreSamplerUITests.swift; sourceTree = "<group>"; };
 		E8C6E84027E18A2C0027816F /* CCAppCoreSamplerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppCoreSamplerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E8C9AB8A2809D8F300F81660 /* TextIconListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextIconListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8C6E84F27E18B8E0027816F /* CCAppCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E80ECB77282B521F00D13E81 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				E80ECB78282B521F00D13E81 /* CCAppCore */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		E899D2DD27E193F300B29C63 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +105,7 @@
 		E8C6E81727E18A2A0027816F = {
 			isa = PBXGroup;
 			children = (
+				E80ECB77282B521F00D13E81 /* Packages */,
 				E8C6E82227E18A2A0027816F /* CCAppCoreSampler */,
 				E8C6E83327E18A2C0027816F /* CCAppCoreSamplerTests */,
 				E8C6E83D27E18A2C0027816F /* CCAppCoreSamplerUITests */,
@@ -116,6 +126,7 @@
 		E8C6E82227E18A2A0027816F /* CCAppCoreSampler */ = {
 			isa = PBXGroup;
 			children = (
+				E8C9AB892809D8BF00F81660 /* ListItems */,
 				E899D2DD27E193F300B29C63 /* Controls */,
 				E8C6E82327E18A2A0027816F /* CCAppCoreSamplerApp.swift */,
 				E8C6E82527E18A2A0027816F /* ContentView.swift */,
@@ -151,6 +162,14 @@
 			path = CCAppCoreSamplerUITests;
 			sourceTree = "<group>";
 		};
+		E8C9AB892809D8BF00F81660 /* ListItems */ = {
+			isa = PBXGroup;
+			children = (
+				E8C9AB8A2809D8F300F81660 /* TextIconListItem.swift */,
+			);
+			path = ListItems;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,7 +187,6 @@
 			);
 			name = CCAppCoreSampler;
 			packageProductDependencies = (
-				E8C6E84E27E18B8E0027816F /* CCAppCore */,
 			);
 			productName = CCAppCoreSampler;
 			productReference = E8C6E82027E18A2A0027816F /* CCAppCoreSampler.app */;
@@ -243,7 +261,6 @@
 			);
 			mainGroup = E8C6E81727E18A2A0027816F;
 			packageReferences = (
-				E8C6E84D27E18B8E0027816F /* XCRemoteSwiftPackageReference "CCAppCore" */,
 			);
 			productRefGroup = E8C6E82127E18A2A0027816F /* Products */;
 			projectDirPath = "";
@@ -289,6 +306,7 @@
 			files = (
 				E8C6E82627E18A2A0027816F /* ContentView.swift in Sources */,
 				E899D2E027E1940D00B29C63 /* CommonButtonView.swift in Sources */,
+				E8C9AB8B2809D8F300F81660 /* TextIconListItem.swift in Sources */,
 				E899D2DC27E1938100B29C63 /* MainView.swift in Sources */,
 				E8C6E82427E18A2A0027816F /* CCAppCoreSamplerApp.swift in Sources */,
 			);
@@ -617,25 +635,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		E8C6E84D27E18B8E0027816F /* XCRemoteSwiftPackageReference "CCAppCore" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ccates83/CCAppCore";
-			requirement = {
-				branch = stable;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		E8C6E84E27E18B8E0027816F /* CCAppCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E8C6E84D27E18B8E0027816F /* XCRemoteSwiftPackageReference "CCAppCore" */;
-			productName = CCAppCore;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E8C6E81827E18A2A0027816F /* Project object */;
 }

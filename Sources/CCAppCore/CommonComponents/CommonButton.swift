@@ -20,7 +20,7 @@ public protocol ButtonStyleAttributes {
     var font: Font { get set }
 }
 
-class CommonButtonStyleAttributes: ObservableObject {
+class CommonButtonStyleAttributes: ObservableObject, ButtonStyleAttributes {
     @Published var backgroundColor: Color = .blue
     @Published var foregroundColor: Color = .white
     @Published var isDisabled: Bool = false
@@ -75,7 +75,6 @@ public struct CommonButton: View {
             .buttonStyle(
                 CommonButtonStyle()
             )
-//            .disabled(self.styleAttributes.isDisabled)
             Spacer(minLength: CommonButton.buttonHorizontalMargins)
         }
         .frame(maxWidth:.infinity)

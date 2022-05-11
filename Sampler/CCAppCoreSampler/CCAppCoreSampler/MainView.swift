@@ -20,13 +20,20 @@ private enum MainViewRows: String, CaseIterable, Identifiable {
         return self.rawValue
     }
     
-    var destination: some View {
+    var destination: some  View {
         switch self {
         case .commonButton:
-            return CommonButtonView(buttonTitle: "Button title!")
-                .environmentObject(CommonButtonStyleAttributes())
+            return Text("hello")
         }
     }
+    
+//    var destination: some View {
+//        switch self {
+//        case .commonButton:
+//            return CommonButtonView(buttonTitle: "Button title!")
+//                .environmentObject(CommonButtonStyleAttributes())
+//        }
+//    }
     
 }
 
@@ -36,7 +43,7 @@ struct MainView: View {
         NavigationView {
             List(MainViewRows.allCases) { row in
                 NavigationLink(destination: {
-                    row.destination
+//                    row.destination
                 }, label: {
                     Text(row.rawValue)
                 })

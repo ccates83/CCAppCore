@@ -10,13 +10,30 @@ import SwiftUI
 
 @available(iOS 13.0.0, *)
 struct LoginViewLayout: View {
+    
+    @State private var email: String = ""
+    @State private var password: String = ""
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Spacer()
+            
+            TextField("Email", text: self.$email)
+            TextField("Password", text: self.$password)
+
+            Spacer()
+            
+            CommonButton(title: "Login") {
+                print("clicked")
+            }
+            .environmentObject(CommonButtonStyleAttributes())
+        }
     }
 }
 
 struct LoginViewLayout_Previews: PreviewProvider {
     static var previews: some View {
         LoginViewLayout()
+            .environmentObject(Style())
     }
 }
