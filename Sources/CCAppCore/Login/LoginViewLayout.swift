@@ -34,6 +34,6 @@ struct LoginViewLayout: View {
 struct LoginViewLayout_Previews: PreviewProvider {
     static var previews: some View {
         LoginViewLayout()
-            .environmentObject(Style())
+//            .environmentObject(Style())
     }
 }

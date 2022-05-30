@@ -20,7 +20,7 @@ class ServiceLocatorTests: XCTestCase {
 
     func testRegisterAndProvideService() throws {
         let locator = ServiceLocator()
-        locator.registerService(service: TestService() as TestProtocol)
+        locator.registerService(TestService() as TestProtocol)
         
         guard let service : TestProtocol = locator.provide() else {
             XCTFail()

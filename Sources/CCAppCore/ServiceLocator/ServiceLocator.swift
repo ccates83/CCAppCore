@@ -10,7 +10,7 @@ import Foundation
 /// ServiceLocator
 ///
 /// Stores a registry of services mapped with the type of the service
-public final class ServiceLocator {
+public class ServiceLocator {
     
     /// Registry of services registered to this locator
     private lazy var registry: [String: AnyObject] = [:]
